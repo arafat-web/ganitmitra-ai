@@ -6,57 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap');
-
-    body {
-        font-family: 'Noto Sans Bengali', sans-serif;
-        background: #f8fafc;
-        min-height: 100vh;
-    }
-
-    .card {
-        background: white;
-        border: 1px solid #e2e8f0;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    }
-
-
-
-    .btn-primary {
-        background: #3b82f6;
-        transition: all 0.2s ease;
-    }
-
-    .btn-primary:hover {
-        background: #2563eb;
-    }
-
-    .example-btn {
-        transition: all 0.2s ease;
-    }
-
-    .example-btn:hover {
-        background: #f1f5f9;
-        border-color: #3b82f6;
-    }
-
-    .loading-spinner {
-        border: 2px solid #f3f4f6;
-        border-top: 2px solid #3b82f6;
-        border-radius: 50%;
-        width: 16px;
-        height: 16px;
-        animation: spin 1s linear infinite;
-        display: inline-block;
-        margin-right: 8px;
-    }
-
-    @keyframes spin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
-    }
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body class="p-6">
 <div class="max-w-2xl mx-auto">
@@ -138,115 +88,43 @@
 </div>
 
 <script>
-// All examples organized by type for contextual suggestions
-const allExamples = {
-    // Addition examples
-    add: [
-        'রাহিমের কাছে ৫টি আম আছে। করিম তাকে ৩টি আম দিল। এখন তার কাছে কতটি আম?',
-        'সারার কাছে ১৫ টাকা আছে। মা তাকে আরো ২৫ টাকা দিল। এখন তার কাছে কত টাকা?',
-        'একটি ঝুড়িতে ১২টি কমলা আছে। আরো ৮টি কমলা রাখা হলো। এখন মোট কতটি কমলা?'
-    ],
-    // Subtraction examples
-    subtract: [
-        'মিতা ১২টি কলম কিনল। সে ৪টি কলম তার ভাইকে দিল। এখন মিতার কাছে কতটি কলম আছে?',
-        'রনির কাছে ৫০ টাকা ছিল। সে ২০ টাকা খরচ করল। এখন তার কাছে কত টাকা আছে?',
-        'একটি বাগানে ২৫টি গোলাপ ছিল। ১০টি ঝড়ে নষ্ট হলো। এখন কতটি গোলাপ আছে?'
-    ],
-    // Multiplication examples
-    multiply: [
-        'একটি ঝুড়িতে ৬টি আপেল আছে। ৪টি ঝুড়িতে মোট কতটি আপেল আছে?',
-        'প্রতিদিন ৭টি করে বই পড়া হয়। ৫ দিনে মোট কতটি বই পড়া হবে?',
-        'একটি বাক্সে ১২টি চকলেট আছে। ৩টি বাক্সে মোট কতটি চকলেট?'
-    ],
-    // Division examples
-    divide: [
-        '২০টি আম ৫ জনের মধ্যে ভাগ করা হলো। প্রত্যেকে কতটি আম পাবে?',
-        '৩৬টি বই ৬টি তাকে সমানভাবে সাজানো হলো। প্রতিটি তাকে কতটি বই?',
-        '৮১টি পেন্সিল ৯ জন ছাত্রের মধ্যে ভাগ করা হলো। প্রত্যেকে কতটি পেন্সিল পাবে?'
-    ],
-    // Mixed examples
-    mixed: [
-        'একটি ট্রাক ৯ কিমি প্রতি লিটার গ্যাস খায়। ট্রাক ৫৪ কিমি যাবে। কত লিটার গ্যাস লাগবে?',
-        'রুবির কাছে ১৫ টাকা আছে। সে ৭ টাকা খরচ করল, পরে ৩ টাকা পেল। এখন তার কাছে কত টাকা?'
-    ]
-};
 
-// Map problems to their types
-const problemTypes = {
-    'রাহিমের কাছে ৫টি আম আছে। করিম তাকে ৩টি আম দিল। এখন তার কাছে কতটি আম?': 'add',
-    'মিতা ১২টি কলম কিনল। সে ৪টি কলম তার ভাইকে দিল। এখন মিতার কাছে কতটি কলম আছে?': 'subtract',
-    'একটি ঝুড়িতে ৬টি আপেল আছে। ৪টি ঝুড়িতে মোট কতটি আপেল আছে?': 'multiply',
-    '২০টি আম ৫ জনের মধ্যে ভাগ করা হলো। প্রত্যেকে কতটি আম পাবে?': 'divide'
-};
-
+    document.getElementById('result').classList.add('hidden');
 // Set example problem function
-function setExample(problemText) {
-    document.getElementById('problem').value = problemText;
-    document.getElementById('problem').focus();
-
-    // Hide initial examples section after first use
-    const initialExamplesDiv = document.getElementById('initialExamples');
-    if (initialExamplesDiv) {
-        // initialExamplesDiv.style.display = 'none';
-    }
-
-    // Add visual feedback
-    const textarea = document.getElementById('problem');
-    textarea.style.borderColor = '#4f46e5';
-    textarea.style.boxShadow = '0 0 0 3px rgba(79, 70, 229, 0.1)';
-
-    setTimeout(() => {
-        textarea.style.borderColor = '';
-        textarea.style.boxShadow = '';
-    }, 1000);
-}
-
-// Show contextual examples after solving
-function showContextualExamples(currentProblem) {
-    const examplesDiv = document.getElementById('examples');
-    const examplesList = document.getElementById('examplesList');
-
-    // Determine the type of current problem
-    const currentType = problemTypes[currentProblem.trim()];
-
-    let examples = [];
-
-    if (currentType) {
-        // If it's a known example problem, show related examples of the same type
-        examples = allExamples[currentType].filter(ex => ex !== currentProblem.trim());
-
-        // If we need more examples, add from other types
-        if (examples.length < 3) {
-            const otherTypes = Object.keys(allExamples).filter(type => type !== currentType);
-            for (let type of otherTypes) {
-                if (examples.length >= 3) break;
-                const otherExamples = allExamples[type].filter(ex => ex !== currentProblem.trim());
-                examples = examples.concat(otherExamples.slice(0, 3 - examples.length));
-            }
-        }
-    } else {
-        // For custom problems, show mixed examples
-        const allPossibleExamples = Object.values(allExamples).flat();
-        examples = allPossibleExamples.filter(ex => ex !== currentProblem.trim()).slice(0, 3);
-    }
-
-    let html = '';
-    examples.forEach(example => {
-        html += `
-            <div class="example-btn p-3 bg-gray-50 rounded-md cursor-pointer text-sm border border-gray-200" onclick="setExample('${example}')">
-                ${example}
-            </div>
-        `;
-    });
-
-    examplesList.innerHTML = html;
-    examplesDiv.classList.remove('hidden');
+function setExample(text) {
+    document.getElementById('problem').value = text;
 }
 
 // Enhanced solve function with animations
 document.getElementById('solveBtn').addEventListener('click', function() {
     solveProblem();
 });
+
+function getProblems(){
+    fetch('ajax_generate.php?n=4')
+    .then(r => r.json())
+    .then(data => {
+        if (!data.success) throw new Error(data.error || 'failed');
+        // show results in the contextual examples area
+        const examplesDiv = document.getElementById('examples');
+        const examplesList = document.getElementById('examplesList');
+        examplesList.innerHTML = '';
+        data.problems.forEach(p => {
+            const d = document.createElement('div');
+            d.className = 'example-btn p-3 bg-gray-50 rounded-md cursor-pointer text-sm border border-gray-200';
+            d.textContent = p;
+            d.addEventListener('click', () => setExample(p));
+            examplesList.appendChild(d);
+        });
+        examplesDiv.classList.remove('hidden');
+        // hide initial block
+        const initial = document.getElementById('initialExamples');
+        if (initial) initial.style.display = 'none';
+    })
+    .catch(err => {
+        alert('জেনারেট করতে সমস্যা: ' + (err.message || err));
+    });
+}
 
 // Allow Enter key to solve (with Ctrl+Enter for newline)
 document.getElementById('problem').addEventListener('keydown', function(e) {
@@ -346,13 +224,9 @@ function solveProblem() {
             html += '</div>';
 
             resultDiv.innerHTML = html;
-
-            // Scroll to result
             resultDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
-
-            // Show contextual examples
             setTimeout(() => {
-                showContextualExamples(problem);
+               getProblems();
             }, 1000);
 
         } catch (e) {
@@ -374,7 +248,6 @@ function solveProblem() {
         `;
     })
     .finally(() => {
-        // Re-enable button
         solveBtn.disabled = false;
         solveBtn.innerHTML = 'সমাধান করুন';
     });

@@ -1,0 +1,54 @@
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap');
+
+    body {
+        font-family: 'Noto Sans Bengali', sans-serif;
+        background: #f8fafc;
+        min-height: 100vh;
+    }
+
+    .card {
+        background: white;
+        border: 1px solid #e2e8f0;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+
+
+    .btn-primary {
+        background: #3b82f6;
+        transition: all 0.2s ease;
+    }
+
+    .btn-primary:hover {
+        background: #2563eb;
+    }
+
+    .example-btn {
+        transition: all 0.2s ease;
+    }
+
+    .example-btn:hover {
+        background: #f1f5f9;
+        border-color: #3b82f6;
+    }
+
+    .loading-spinner {
+        border: 2px solid #f3f4f6;
+        border-top: 2px solid #3b82f6;
+        border-radius: 50%;
+        width: 16px;
+        height: 16px;
+        animation: spin 1s linear infinite;
+        display: inline-block;
+        margin-right: 8px;
+    }
+
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
