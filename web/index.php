@@ -292,9 +292,8 @@
                             }
 
                             html += `
-                    <div class="bg-green-50 p-4 rounded-md shadow-sm text-center">
-                        <p class="font-bold text-lg text-green-800">উত্তর:</p>
-                        <p class="font-extrabold text-2xl text-green-900 mt-1">${data.bengali_answer || data.answer || '❓'}</p>
+                    <div class="bg-blue-50 p-4 rounded-md border border-blue-200 text-center">
+                        <p class="font-bold text-xl text-blue-700">উত্তর: ${data.bengali_answer || data.answer || '❓'}</p>
                     </div>
                     <p class="text-xs text-yellow-800">⚠️ দয়া করে মনে রাখবেন, AI দ্বারা তৈরি সমস্যাগুলি মাঝে মাঝে ভুল বা অসঙ্গত হতে পারে।</p>
                 `;
