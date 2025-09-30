@@ -1,7 +1,6 @@
 <div align="center">
   
   <h1>গণিতমিত্র AI (Ganitmitra AI)</h1>
-  
   <p><strong>A small, focused Bengali elementary math solver. It reads a natural-language problem (Bangla), predicts the operation with a lightweight ML model, computes the answer, and shows step‑by‑step reasoning in Bengali.</strong></p>
   
   <p>
@@ -10,6 +9,9 @@
     <img src="https://img.shields.io/github/issues/arafat-web/ganitmitra-ai?style=for-the-badge" alt="Issues">
     <img src="https://img.shields.io/github/forks/arafat-web/ganitmitra-ai?style=for-the-badge" alt="Forks">
   </p>
+  <a href="https://ganitmitraai.arafatdev.com" target="_blank">
+    <img src="https://img.shields.io/badge/Live Demo-Visit Now-red?style=for-the-badge&logo=google-chrome&logoColor=white" alt="Ganitmitra AI Live Demo">
+  </a>
 </div>
 
 ## What’s inside (at a glance)
@@ -169,11 +171,12 @@ ganitmitra-ai/
 
 For issues and feature requests, use [GitHub Issues](https://github.com/arafat-web/ganitmitra-ai/issues).
 
-
 ## License
+
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ## Connect with me
+
 <div align="center">
   
 [![Email](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:arafat.122260@gmail.com)

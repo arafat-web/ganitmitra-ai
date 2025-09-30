@@ -15,67 +15,41 @@
     <!-- Custom Styles -->
     <link rel="stylesheet" href="style.css">
 
-    <!-- Optional Handwriting Font for Whiteboard Style -->
-    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
-
-    <style>
-        .whiteboard-steps {
-            font-family: 'Patrick Hand', cursive;
-        }
-
-        .loading-spinner {
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid #3b82f6;
-            border-radius: 50%;
-            width: 36px;
-            height: 36px;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@400..800&family=Noto+Sans+Bengali:wght@100..900&display=swap"
+        rel="stylesheet">
 </head>
 
-<body class="p-6 bg-gray-50">
+<body class="p-2 bg-gray-50">
     <div class="max-w-2xl mx-auto">
 
         <!-- Header -->
         <div class="card rounded-lg p-6 text-center mb-8">
-            <header class="mb-8 text-center">
-                <h1 class="text-2xl font-bold text-gray-900 mb-2">গণিতমিত্র AI</h1>
-                <p class="text-gray-700">প্রাথমিক স্তরের গণিত সমাধানে আপনার বিশ্বস্ত বুদ্ধিমত্তা সহকারী</p>
+            <header class="text-center">
+                <h1 class="text-3xl font-extrabold text-purple-700 mb-2 flex items-center justify-center gap-2">
+                    <span>গণিতমিত্র <span class="text-blue-600">AI</span></span>
+                </h1>
+                <p class="text-gray-700 text-sm">প্রাথমিক স্তরের গণিত সমস্যা সমাধানে তৈরি AI সহকারী</p>
 
-                <div class="flex flex-wrap gap-2 justify-center mt-3 mb-4">
-                    <span class="px-2.5 py-1 text-xs bg-blue-50 text-blue-700 rounded border border-blue-200">নিজস্ব
-                        ডাটাসেটে প্রশিক্ষিত</span>
-                    <span class="px-2.5 py-1 text-xs bg-green-50 text-green-700 rounded border border-green-200">
-                        ধাপে ধাপে বিশদ সমাধান
-                    </span>
+                <div class="flex flex-wrap gap-2 justify-center mt-3 mb-2">
                     <span class="px-2.5 py-1 text-xs bg-purple-50 text-purple-700 rounded border border-purple-200">
-                        ১০,০০০+ সমস্যা দক্ষতার সঙ্গে সমাধান
+                        ১০,০০০+ সমস্যা সমাধানে দক্ষ
                     </span>
                 </div>
                 <div class="flex items-center justify-center gap-3">
-                    <a href="https://github.com/arafathossainar/ganitmitraAI" target="_blank"
-                        class="inline-flex items-center px-3 py-1.5 bg-gray-900 hover:bg-gray-800 text-white text-white text-xs rounded-md transition-colors">
+                    <a href="https://github.com/arafat-web/ganitmitraAI" target="_blank"
+                        class="inline-flex items-center px-2.5 py-1 text-xs bg-gray-50 text-gray-700 rounded border border-gray-200">
                         <i class="fab fa-github mr-1.5"></i>
                         Source
                     </a>
                     <button id="openInfoBtn"
-                        class="inline-flex items-center px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white text-xs rounded-md transition-colors">
+                        class="inline-flex items-center px-2.5 py-1 text-xs bg-blue-50 text-blue-700 rounded border border-blue-200">
                         <i class="fa-regular fa-circle-question mr-1.5"></i>
-                        বিস্তারিত জানুন
+                        গাইডলাইন
                     </button>
                 </div>
-
                 <p class="text-xs text-gray-500 mt-2">দ্রষ্টব্য: AI-তৈরি সমাধানে মাঝে মাঝে ত্রুটি থাকতে পারে, সঠিকতার
                     জন্য যাচাই করুন।</p>
             </header>
@@ -178,7 +152,8 @@
         <!-- Footer -->
         <div class="text-center mt-3">
             <p class="text-sm text-gray-600">
-                Developed by <span class="font-medium text-blue-600">Arafat Hossain Ar</span>
+                Developed by <a href="https://arafat.dev" target="_blank"
+                    class="text-blue-600 hover:underline">Arafat Hossain</a>.
             </p>
         </div>
     </div>
@@ -283,7 +258,7 @@
                             let html = `<div class="space-y-6">`;
                             if (Array.isArray(data.steps) && data.steps.length > 0) {
                                 html += `
-                        <div class="bg-white p-4 rounded-md shadow-sm whiteboard-steps space-y-2">
+                        <div class="bg-white p-4 rounded-md shadow-sm whiteboard-steps space-y-2 text-base">
                             <h3 class="font-semibold text-gray-700 mb-2">সমাধান প্রক্রিয়া:</h3>
                             <ol class="list-none space-y-1">
                                 ${data.steps.map(step => `<li>→ ${step}</li>`).join('')}
@@ -292,7 +267,7 @@
                             }
 
                             html += `
-                    <div class="bg-blue-50 p-4 rounded-md border border-blue-200 text-center">
+                    <div class="bg-blue-50 p-4 rounded-md border border-blue-200 whiteboard-steps text-center">
                         <p class="font-bold text-xl text-blue-700">উত্তর: ${data.bengali_answer || data.answer || '❓'}</p>
                     </div>
                     <p class="text-xs text-yellow-800">⚠️ দয়া করে মনে রাখবেন, AI দ্বারা তৈরি সমস্যাগুলি মাঝে মাঝে ভুল বা অসঙ্গত হতে পারে।</p>
