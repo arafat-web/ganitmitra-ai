@@ -9,7 +9,7 @@
     <img src="https://img.shields.io/github/issues/arafat-web/ganitmitra-ai?style=for-the-badge" alt="Issues">
     <img src="https://img.shields.io/github/forks/arafat-web/ganitmitra-ai?style=for-the-badge" alt="Forks">
   </p>
-  <a href="https://ganitmitraai.arafatdev.com" target="_blank">
+  <a href="https://ganitmitra.arafatdev.com" target="_blank">
     <img src="https://img.shields.io/badge/Live Demo-Visit Now-red?style=for-the-badge&logo=google-chrome&logoColor=white" alt="Ganitmitra AI Live Demo">
   </a>
 </div>
